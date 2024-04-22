@@ -23,11 +23,6 @@ class Sprite {
         console.log("keyChange: " + state['key_change']);
         console.log("keyChange: " + state['keyChange']);
 
-        if(state['keyChange' == true])
-        {
-            this.cur_frame = 0;
-        }
-
         if(state['key_change'] == 'w')
         {
             //this.cur_frame = 0;
@@ -52,12 +47,18 @@ class Sprite {
             this.state = "walk_E";
             this.x_v = 10;
         }
-        else {
+        else if(state['key_change'] == 'n'){
            // this.set_idle_state();
             //this.cur_frame = 0;
-            //this.state = "idle";
+            this.state = "idle";
             this.x_v = 0;
             this.y_v = 0;
+        }
+
+                
+        if(state['keyChange'] == true)
+        {
+            this.cur_frame = 0;
         }
 
 
@@ -100,10 +101,8 @@ class Sprite {
             this.cur_frame = 0;
         }
         
+
         return false;
-
-
-        
     }
 
     set_idle_state(){

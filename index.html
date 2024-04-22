@@ -46,7 +46,7 @@
 
 
     var keyPress = 'n';
-    var lastKeyPress = '';
+    var lastKeyPress = 'n';
     var keyChange = false;
 
     function draw_loop(){
@@ -64,9 +64,10 @@
             has_background_changed = sprites_to_draw[0][i].draw();
         }
             
-
-        document.onkeypress = function(event){
+        document.onkeydown = function(event){
             //alert(event.key);  
+            console.log("*************************" + event.key);
+
             if(event.key != lastKeyPress)
             {
                 keyChange = true;
@@ -83,20 +84,24 @@
             }
             else if(event.key == 's')
             {
-            
                 keyPress = 's'; 
                 lastKeyPress = 's';
             }
             else if(event.key == 'd')
             {
-                
                 keyPress = 'd'; 
                 lastKeyPress = 'd';
             }
             else {
-                keyPress = 'n';
-                lastKeyPress = 'n';
+                //keyPress = 'n';
+                //lastKeyPress = 'n';
             }
+        }
+
+        if(keyPress == 'n' && lastKeyPress != 'n') {
+            keyChange = true;
+            lastKeyPress = 'n';
+          
         }
 
 
